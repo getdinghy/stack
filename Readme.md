@@ -33,7 +33,7 @@ The easiest way to get the Stack up and running is by creating a Terraform defin
 named `terraform.tf`:
 ```hcl
 module "stack" {
-  source      = "github.com/segmentio/stack"
+  source      = "github.com/getdinghy/stack"
   environment = "prod"
   key_name    = "my-key-name"
   name        = "my-app"
@@ -61,7 +61,7 @@ Here's a sample service definition, try adding it to your `terraform.tf` file.
 ```hcl
 module "nginx" {
   # this sources from the "stack//service" module
-  source          = "github.com/segmentio/stack//service"
+  source          = "github.com/getdinghy/stack//service"
   name            = "my-app"
   image           = "nginx"
   port            = 80
@@ -210,7 +210,7 @@ ecs-logs creates one CloudWatch Logs Group for each service, then in each of the
 
 If you're interested in digging further into how ecs-logs work here is the github repository where it's hosted:
 
-- https://github.com/segmentio/ecs-logs
+- https://github.com/getdinghy/ecs-logs
 
 ## Module Reference
 
@@ -220,7 +220,7 @@ You can reference modules individually by name:
 
 ```hcl
 module "vpc" {
-  source             = "github.com/segmentio/stack//vpc"
+  source             = "github.com/getdinghy/stack//vpc"
   name               = "${var.name}"
   environment        = "${var.environment}"
   cidr               = "${var.cidr}"
@@ -250,7 +250,7 @@ Stack is all vanilla Terraform and AWS, so you can customize it by simply forkin
 
 To dig further down into what you can build with the Segment Stack we have put together an example app that shows how to configure a small infrastructure from scratch:
 
-- https://github.com/segmentio/pingdummy
+- https://github.com/getdinghy/pingdummy
 
 ## Authors
 

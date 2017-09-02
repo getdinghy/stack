@@ -5,7 +5,7 @@
  * Usage:
  *
  *      module "auth_service" {
- *        source    = "github.com/segmentio/stack/service"
+ *        source    = "github.com/getdinghy/stack/service"
  *        name      = "auth-service"
  *        image     = "auth-service"
  *        cluster   = "default"

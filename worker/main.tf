@@ -4,7 +4,7 @@
  * Usage:
  *
  *     module "my_worker" {
- *       source       = "github.com/segmentio/stack"
+ *       source       = "github.com/getdinghy/stack"
  *       environment  = "prod"
  *       name         = "worker"
  *       image        = "worker"
