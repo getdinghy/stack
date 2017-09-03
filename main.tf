@@ -65,6 +65,10 @@ variable "bastion_instance_type" {
   default = "t2.micro"
 }
 
+variable "bastion_ami_id" {
+  description = "AMI id to use for the bastion"
+}
+
 variable "ecs_cluster_name" {
   description = "the name of the cluster, if not specified the variable name will be used"
   default = ""
@@ -175,6 +179,7 @@ module "bastion" {
   source          = "./bastion"
   region          = "${var.region}"
   instance_type   = "${var.bastion_instance_type}"
+  ami_id          = "${var.bastion_ami_id}"
   security_groups = "${module.security_groups.external_ssh},${module.security_groups.internal_ssh}"
   vpc_id          = "${module.vpc.id}"
   subnet_id       = "${element(module.vpc.external_subnets, 0)}"

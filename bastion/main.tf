@@ -50,15 +50,19 @@ variable "environment" {
   description = "Environment tag, e.g prod"
 }
 
-module "ami" {
-  source        = "github.com/terraform-community-modules/tf_aws_ubuntu_ami/ebs"
-  region        = "${var.region}"
-  distribution  = "trusty"
-  instance_type = "${var.instance_type}"
+variable "ami_id" {
+  description = "AMI id to use for the Bastion"
 }
 
+# module "ami" {
+#   source        = "github.com/terraform-community-modules/tf_aws_ubuntu_ami/ebs"
+#   region        = "${var.region}"
+#   distribution  = "trusty"
+#   instance_type = "${var.instance_type}"
+# }
+
 resource "aws_instance" "bastion" {
-  ami                    = "${module.ami.ami_id}"
+  ami                    = "${var.ami_id}"
   source_dest_check      = false
   instance_type          = "${var.instance_type}"
   subnet_id              = "${var.subnet_id}"
