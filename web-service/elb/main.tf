@@ -9,7 +9,8 @@ variable "name" {
 }
 
 variable "subnet_ids" {
-  description = "Comma separated list of subnet IDs"
+  description = "List of subnet IDs"
+  type        = "list"
 }
 
 variable "environment" {
@@ -60,7 +61,7 @@ resource "aws_elb" "main" {
 
   internal                  = false
   cross_zone_load_balancing = true
-  subnets                   = ["${split(",", var.subnet_ids)}"]
+  subnets                   = ["${var.subnet_ids}"]
   security_groups           = ["${split(",",var.security_groups)}"]
 
   idle_timeout                = 30
